@@ -96,8 +96,10 @@ class MainApp(App):
 
     PLANETS = {
         'Mini': {"source": 'assets/images/2.png', 'hp': 10, 'size': ('300dp', '300dp')},
-        'Medium': {"source": 'assets/images/3.png', 'hp': 10,'size': ('200dp', '200dp')},
-        'Hard': {"source": 'assets/images/4.png', 'hp': 10,'size': ('200dp', '200dp')},
+        'Medium': {"source": 'assets/images/3.png', 'hp': 17,'size': ('200dp', '200dp')},
+        'Hard': {"source": 'assets/images/4.png', 'hp': 25,'size': ('200dp', '200dp')},
+        #'Very Hard1': {"source": 'assets/images/4.png', 'hp': 25,'size': ('200dp', '200dp')},
+        #'Very Hard2': {"source": 'assets/images/4.png', 'hp': 25,'size': ('200dp', '200dp')},
     }
 
 
