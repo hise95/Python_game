@@ -1,0 +1,115 @@
+#:set main_color rgba('B5C18E')
+#:set color_accent "#EADBC8"
+#:set text_color "#C7B7A3"
+#:set btn_press '#F1F1F1'
+#:set btn_release '#EADBC8'
+
+<ButtonMenu@Button>:
+    color: text_color
+    font_size: '20dp'
+    font_name: 'assets/PoetsenOne-Regular.ttf'
+    background_color: '#EADBC8'
+    size_hint_y: 0.10
+    background_normal: ""
+    background_down: ''
+    on_press: self.background_color = btn_press
+    on_release: self.background_color = btn_release
+
+<Screen, ScreenManager>:
+    canvas.before:
+        Color:
+            rgba: main_color
+        Rectangle:
+            size: self.size
+            pos: self.pos
+
+<MenuScreen>:
+    BoxLayout:
+        orientation: 'vertical'
+        padding: '20dp'
+        spacing: '20dp'
+        Label:
+            id: title_game
+            text: 'Pirates Treasures'
+            font_name: 'assets/PoetsenOne-Regular.ttf'
+            font_size: '30dp'
+            size_hint_y: .2
+            color: color_accent
+        Image:
+            source: 'assets/images/1.png'
+            size_hint_y: .3
+            allow_stretch: True
+        Widget:
+            size_hint_y: .3
+        
+        ButtonMenu:
+            text: "Start"
+            on_release: root.manager.current = "game"
+        ButtonMenu:
+            text: "Exit"
+            on_release: exit()
+<GameScreen>:
+    BoxLayout:
+        padding: '20dp'
+        spacing: '20dp'
+        orientation: 'vertical'
+        BoxLayout:
+            orientation: "horizontal"
+            size_hint_y: 0.10
+            size:"50dp",'50dp' 
+            Label:
+                id: 'result'
+                text: "score: " + str(root.points)
+                font_size: '40dp'
+                font_name: 'assets/PoetsenOne-Regular.ttf'
+                color: ('ff6600')
+        FloatLayout:
+            size_hint_y: 0.90
+            Planet:
+                id: planet
+        BoxLayout:
+            size_hint_y: 0.10
+            Button:
+                color: text_color
+                font_size: '20dp'
+                font_name: 'assets/PoetsenOne-Regular.ttf'
+                background_color: btn_release
+                background_normal: ""
+                background_down: ''
+                on_press: self.background_color = btn_press
+                on_release: self.background_color = btn_release
+                text: "Back"
+                size_hint_y: 1
+                size_hint_x: 1
+                on_release: root.manager.current = 'menu'
+
+
+
+<SettingsScreen>:
+    BoxLayout:
+        padding: '20dp'
+        spacing: '20dp'
+        orientation: 'vertical'
+        BoxLayout:
+            orientation: "horizontal"
+            size_hint_y: 0.10
+            size:"50dp",'50dp'
+            Button:
+                color: text_color
+                font_size: '20dp'
+                font_name: 'assets/PoetsenOne-Regular.ttf'
+                background_color: btn_release
+                size_hint_y: 0.10
+                background_normal: ""
+                background_down: ''
+                on_press: self.background_color = btn_press
+                on_release: self.background_color = btn_release
+                text: "Back"
+                on_release: root.manager.current = 'menu'
+
+<Planet>:
+    allow_stretch: True
+    size_hint: None, None
+    center: self.parent.center
+    size: '200dp', '200dp'
+    source: 'assets/images/2.png'
